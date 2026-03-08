@@ -31,28 +31,7 @@
       overflow-x: hidden;
     }
 
-    /* ─── CURSOR ─── */
-    body { cursor: none; }
-    #cursor {
-      width: 10px; height: 10px;
-      background: var(--gold);
-      border-radius: 50%;
-      position: fixed; top: 0; left: 0;
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%,-50%);
-      transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
-    }
-    #cursor-ring {
-      width: 36px; height: 36px;
-      border: 1px solid var(--gold);
-      border-radius: 50%;
-      position: fixed; top: 0; left: 0;
-      pointer-events: none; z-index: 9998;
-      transform: translate(-50%,-50%);
-      transition: transform 0.25s ease, width 0.25s, height 0.25s, border-color 0.25s;
-      opacity: 0.6;
-    }
-    body:hover #cursor { display:block; }
+
 
     /* ─── NAV ─── */
     nav {
@@ -100,7 +79,7 @@
     .nav-cta:hover { background: var(--gold-light) !important; }
 
     /* hamburger */
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); transition: 0.3s; }
 
     /* mobile nav overlay */
@@ -119,7 +98,7 @@
     .mobile-close {
       position: absolute; top: 24px; right: 5vw;
       background: none; border: none; color: var(--cream);
-      font-size: 2rem; cursor: none;
+      font-size: 2rem; cursor: pointer;
     }
 
     /* ─── HERO ─── */
@@ -315,7 +294,7 @@
     .menu-tab {
       padding: 12px 28px; background: none; border: none;
       color: var(--muted); font-size: 0.75rem; letter-spacing: 0.15em;
-      text-transform: uppercase; cursor: none;
+      text-transform: uppercase; cursor: pointer;
       border-bottom: 2px solid transparent; margin-bottom: -1px;
       transition: color 0.2s, border-color 0.2s;
     }
@@ -368,7 +347,7 @@
       background: var(--dark);
       display: flex; align-items: center; justify-content: center;
       font-size: 3rem; position: relative;
-      cursor: none;
+      cursor: default;
     }
     .gallery-item::after {
       content: ''; position: absolute; inset: 0;
@@ -463,7 +442,7 @@
       width: 40px; height: 40px; border: 1px solid var(--border); background: none;
       color: var(--cream); border-radius: 50%; font-size: 1rem;
       display: flex; align-items: center; justify-content: center;
-      cursor: none; transition: border-color 0.2s, background 0.2s;
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
     }
     .rev-btn:hover { border-color: var(--gold); background: rgba(201,151,58,0.1); }
 
@@ -514,7 +493,7 @@
       width: 100%; background: var(--gold); color: var(--dark);
       border: none; padding: 14px; font-size: 0.78rem;
       letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
-      border-radius: 2px; cursor: none; transition: background 0.2s;
+      border-radius: 2px; cursor: pointer; transition: background 0.2s;
     }
     .form-submit:hover { background: var(--gold-light); }
     .form-success {
@@ -595,7 +574,7 @@
       width: 44px; height: 44px; background: var(--gold); color: var(--dark);
       border: none; border-radius: 50%; font-size: 1.1rem;
       display: flex; align-items: center; justify-content: center;
-      cursor: none; opacity: 0; pointer-events: none;
+      cursor: pointer; opacity: 0; pointer-events: none;
       transition: opacity 0.3s, transform 0.3s;
     }
     #btt.show { opacity: 1; pointer-events: all; }
@@ -619,9 +598,9 @@
     }
     .age-gate-sub { color: var(--muted); font-size: 0.82rem; margin-bottom: 2.5rem; }
     .age-gate-btns { display: flex; gap: 1rem; }
-    .age-yes { background: var(--gold); color: var(--dark); border: none; padding: 14px 40px; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; cursor: none; border-radius: 2px; transition: background 0.2s; }
+    .age-yes { background: var(--gold); color: var(--dark); border: none; padding: 14px 40px; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; cursor: pointer; border-radius: 2px; transition: background 0.2s; }
     .age-yes:hover { background: var(--gold-light); }
-    .age-no { background: none; color: var(--muted); border: 1px solid var(--border); padding: 14px 40px; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: none; border-radius: 2px; transition: border-color 0.2s; }
+    .age-no { background: none; color: var(--muted); border: 1px solid var(--border); padding: 14px 40px; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: border-color 0.2s; }
     .age-no:hover { border-color: var(--muted); }
     #age-gate.hidden { display: none; }
 
@@ -653,17 +632,11 @@
       .form-row { grid-template-columns: 1fr; }
       .hours-strip-inner { gap: 0; }
       .hours-day { min-width: 90px; padding: 20px 8px; }
-      #cursor, #cursor-ring { display: none; }
-      body { cursor: auto; }
       .hamburger, .mobile-close, .rev-btn, .age-yes, .age-no, .form-submit, .menu-tab, .about-feature, .event-card { cursor: pointer; }
     }
   </style>
 </head>
 <body>
-
-<!-- Custom Cursor -->
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
 
 <!-- Age Gate -->
 <div id="age-gate">
@@ -1121,7 +1094,7 @@
       <span class="c-icon">✉️</span>
       <div>
         <div class="c-label">Email</div>
-        <div class="c-value"><a href="mailto:hello@theauldbarrel.co.uk">hello@theauldbarrel.co.uk</a></div>
+        <div class="c-value"><a href="/cdn-cgi/l/email-protection#97fff2fbfbf8d7e3fff2f6e2fbf3f5f6e5e5f2fbb9f4f8b9e2fc"><span class="__cf_email__" data-cfemail="5a323f3636351a2e323f3b2f363e383b28283f36743935742f31">[email&#160;protected]</span></a></div>
       </div>
     </div>
     <div class="contact-detail">
@@ -1252,7 +1225,7 @@
       <h4>Contact</h4>
       <ul>
         <li><a href="tel:+441563512847">01563 512 847</a></li>
-        <li><a href="mailto:hello@theauldbarrel.co.uk">hello@theauldbarrel.co.uk</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#c0a8a5acacaf80b4a8a5a1b5aca4a2a1b2b2a5aceea3afeeb5ab"><span class="__cf_email__" data-cfemail="08606d646467487c606d697d646c6a697a7a6d64266b67267d63">[email&#160;protected]</span></a></li>
         <li><a href="#">42 Bank Street, Kilmarnock KA1 1ER</a></li>
       </ul>
       <h4 style="margin-top:1.5rem">Hours</h4>
@@ -1275,29 +1248,7 @@
   </div>
 </footer>
 
-<script>
-  /* ─── CURSOR ─── */
-  const cur = document.getElementById('cursor');
-  const ring = document.getElementById('cursor-ring');
-  document.addEventListener('mousemove', e => {
-    cur.style.left = e.clientX + 'px';
-    cur.style.top = e.clientY + 'px';
-    setTimeout(() => {
-      ring.style.left = e.clientX + 'px';
-      ring.style.top = e.clientY + 'px';
-    }, 60);
-  });
-  document.querySelectorAll('a,button,.menu-item,.event-card,.gallery-item,.review-card').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cur.style.width = '16px'; cur.style.height = '16px';
-      ring.style.width = '50px'; ring.style.height = '50px';
-    });
-    el.addEventListener('mouseleave', () => {
-      cur.style.width = '10px'; cur.style.height = '10px';
-      ring.style.width = '36px'; ring.style.height = '36px';
-    });
-  });
-
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   /* ─── AGE GATE ─── */
   function enterSite() {
     document.getElementById('age-gate').classList.add('hidden');
@@ -1386,18 +1337,4 @@
     </div>
     <div class="gallery-item g3">
       <div class="gp gp3" style="font-size:3.5rem">🎸</div>
-      <div class="g-label">Live Music Nights</div>
-    </div>
-    <div class="gallery-item g4">
-      <div class="gp gp4" style="font-size:3.5rem">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
-      <div class="g-label">Match Day</div>
-    </div>
-    <div class="gallery-item g5">
-      <div class="gp gp5" style="font-size:3.5rem">🍻</div>
-      <div class="g-label">Good Craic</div>
-    </div>
-  </div>
-</section>
-
-</body>
-</html>
+      <div class="g-la
